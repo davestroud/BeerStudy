@@ -1,5 +1,5 @@
 ---
-title: "BottomsUp"
+title: "Another File"
 author: "David Stroud"
 date: "2/12/2018"
 output: html_document
@@ -9,8 +9,4 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Clean RMD file
-```{r}
-summary(cars)
-```
-
+### Test RMarkdown file
