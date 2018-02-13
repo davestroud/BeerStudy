@@ -10,3 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### Clean RMD file
+```{r}
+summary(cars)
+```
+
