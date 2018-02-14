@@ -11,9 +11,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Cory Test
 
-### Clean RMD file
-```{r}
-summary(cars)
-```
-
-#### We are making changes
+### Nice job  ~ dstroud
