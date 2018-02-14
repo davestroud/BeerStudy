@@ -9,9 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Clean RMD file
-```{r}
-summary(cars)
-```
+### Cory Test
 
-#### We are making changes
+### Nice job  ~ dstroud
