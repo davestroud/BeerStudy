@@ -17,15 +17,20 @@ library(psych)
 library(dplyr)
 
 Beers <- read.csv('Beers.csv')
-Beers[is.na(Beers)]<- 0
 str(Beers)
 describe(Beers)
+summary(Beers)
 ```
 
 ```{r}
 Breweries <- read.csv('Breweries.csv')
-Breweries[is.na(Breweries)]<- 0
 str(Breweries)
 describe(Breweries)
+summary(Breweries)
 ``` 
+
+```{r}
+# How many breweries are present in each state?
+Breweries$State
+```
 
