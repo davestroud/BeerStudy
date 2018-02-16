@@ -1,6 +1,6 @@
 ---
 title: "BottomsUp"
-author: "David Stroud"
+author: "Stacy Conant, Korey Macvittie, Cory Thigpen, David Stroud"
 date: "2/12/2018"
 output: html_document
 ---
@@ -14,7 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(psych)
-library(dplyr)
+library(plyr)
+library(tidyr)
 
 Beers <- read.csv('Beers.csv')
 str(Beers)
@@ -31,6 +32,8 @@ summary(Breweries)
 
 ```{r}
 # How many breweries are present in each state?
-Breweries$State
+count(Breweries, ("State"))
 ```
+
+
 
