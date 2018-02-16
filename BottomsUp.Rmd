@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-<<<<<<< HEAD
+
 ```{r}
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
@@ -20,18 +20,10 @@ Beers <- read.csv('Beers.csv')
 str(Beers)
 describe(Beers)
 ```
-||||||| merged common ancestors
-### Clean RMD file
-```{r}
-summary(cars)
-```
-=======
-### Cory Test
->>>>>>> 55d1dd69e4b5960865da2b6cefe994d4899030c7
 
-<<<<<<< HEAD
-||||||| merged common ancestors
-#### We are making changes
-=======
-### Nice job  ~ dstroud
->>>>>>> 55d1dd69e4b5960865da2b6cefe994d4899030c7
+```{r}
+Breweries <- read.csv('Breweries.csv')
+str(Breweries)
+describe(Breweries)
+```
+
