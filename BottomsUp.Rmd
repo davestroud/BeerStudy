@@ -9,9 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Clean RMD file
 ```{r}
-summary(cars)
+library(ggplot2) # Data visualization
+library(readr) # CSV file I/O, e.g. the read_csv function
+library(psych)
+library(dplyr)
+
+Beers <- read.csv('Beers.csv')
+str(Beers)
+describe(Beers)
 ```
 
-#### We are making changes
