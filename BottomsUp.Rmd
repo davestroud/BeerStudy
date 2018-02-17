@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+
 ```{r}
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
@@ -36,4 +37,67 @@ count(Breweries, ("State"))
 ```
 
 
+
+||||||| merged common ancestors
+### Nice job  ~ dstroud
+=======
+### Nice job  ~ dstroud
+
+/* Cory's sad first attempt */
+
+##Merge
+```{r merge, include=TRUE}
+Beers <- read.csv("C:/Users/william.thigpen/Dropbox/Doing Data Science/Case Study 1/Beers.csv")
+Breweries <- read.csv("C:/Users/william.thigpen/Dropbox/Doing Data Science/Case Study 1/Breweries.csv")
+names(Beers) <- c("Name", "Beer_ID", "ABV", "IBU", "Brew_ID")
+brewset <- merge(Beers, Breweries, by="Brew_ID", all=FALSE)
+```
+
+##Question 1
+###How many breweries are present in each state?
+```{r q1, include=TRUE}
+summary(brewset$State)
+```
+
+##Question 2
+###Merge beer data with the breweries data. Print the first 6 observations and the last six observations to check the merged file.
+```{r q2, include=TRUE}
+head(brewset, 6)
+tail(brewset, 6)
+```
+
+##Question 3
+###Report the number of NA's in each column.
+```{r q3, include=TRUE}
+sapply(X = brewset, FUN = function(x) sum(is.na(x)))
+```
+
+##Question 4
+###Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
+```{r q4, include=TRUE}
+ABVmedians <- aggregate(brewset$ABV, list(brewset$State), median, na.rm=TRUE)
+barplot(`colnames<-`(t(ABVmedians[-1]), ABVmedians[,1]), beside=TRUE, legend.text = TRUE, col = c("black", "grey"), cex.names=.6)
+IBUmedians <- aggregate(brewset$IBU, list(brewset$State), median, na.rm=TRUE)
+barplot(`colnames<-`(t(IBUmedians[-1]), IBUmedians[,1]), beside=TRUE, legend.text = TRUE, col = c("black", "grey"), cex.names=.6)
+```
+
+/* This could surely be done better */
+##Question 5
+###Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
+```{r q5, include=TRUE}
+aggregate(brewset$ABV, list(brewset$State), max, na.rm=TRUE)
+```
+
+##Question 6
+###Summary statistics for the ABV variable.
+```{r q6, include=TRUE}
+summary(brewset$ABV)
+```
+
+/* This is a sadly coded plot */
+##Question 7 
+###Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
+```{r q7, include=TRUE}
+plot(brewset$IBU, brewset$ABV, na.rm=TRUE)
+```
 
