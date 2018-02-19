@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519077400142.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2777404535",
+    "id" : "4FDCFF2E",
+    "lastKnownWriteTime" : 1519077748,
+    "last_content_update" : 1519077748811,
+    "path" : "~/Dropbox/Data_Science1/Beer/Stroud_Test.Rmd",
+    "project_path" : "Stroud_Test.Rmd",
+    "properties" : {
+        "cursorPosition" : "4,21",
+        "last_setup_crc32" : "7416D89Fbb338d19",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

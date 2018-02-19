@@ -1,0 +1,21 @@
+]0;~/Dropbox/Data_Science1/Beer]133;C;]1337;RemoteHost=davidstroud@grey-matter.local]1337;CurrentDir=/Users/davidstroud/Dropbox/Data_Science1/Beer[?1034h]133;D;0]133;A[0;35mdavidstroud[0;32m (master #)[0;34m Beer $ [0m]133;B[K]133;D;0]133;A[0;35mdavidstroud[0;32m (master #)[0;34m Beer $ [0m]133;Becho "# BeerStudy"  >> README.md
+]133;C;]1337;RemoteHost=davidstroud@grey-matter.local]1337;CurrentDir=/Users/davidstroud/Dropbox/Data_Science1/Beer]0;~/Dropbox/Data_Science1/Beer]133;D;0]133;A[0;35mdavidstroud[0;32m (master #)[0;34m Beer $ [0m]133;Bgit init
+]133;C;Reinitialized existing Git repository in /Users/davidstroud/Dropbox/Data_Science1/Beer/.git/
+]1337;RemoteHost=davidstroud@grey-matter.local]1337;CurrentDir=/Users/davidstroud/Dropbox/Data_Science1/Beer]0;~/Dropbox/Data_Science1/Beer]133;D;0]133;A[0;35mdavidstroud[0;32m (master #)[0;34m Beer $ [0m]133;Bgit add README.md
+]133;C;]1337;RemoteHost=davidstroud@grey-matter.local]1337;CurrentDir=/Users/davidstroud/Dropbox/Data_Science1/Beer]0;~/Dropbox/Data_Science1/Beer]133;D;0]133;A[0;35mdavidstroud[0;32m (master #)[0;34m Beer $ [0m]133;B[K]133;D;0]133;A[0;35mdavidstroud[0;32m (master #)[0;34m Beer $ [0m]133;B[K]133;D;0]133;A[0;35mdavidstroud[0;32m (master #)[0;34m Beer $ [0m]133;Bgit commit -m "first commit"
+]133;C;[master (root-commit) 2467e97] first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+]1337;RemoteHost=davidstroud@grey-matter.local]1337;CurrentDir=/Users/davidstroud/Dropbox/Data_Science1/Beer]0;~/Dropbox/Data_Science1/Beer]133;D;0]133;A[0;35mdavidstroud[0;32m (master)[0;34m Beer $ [0m]133;Bgit remote add origin https://github.com/davestr oud/BeerStudy.git
+]133;C;]1337;RemoteHost=davidstroud@grey-matter.local]1337;CurrentDir=/Users/davidstroud/Dropbox/Data_Science1/Beer]0;~/Dropbox/Data_Science1/Beer]133;D;0]133;A[0;35mdavidstroud[0;32m (master)[0;34m Beer $ [0m]133;Bgit push -u origin master
+]133;C;error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': davestroud
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://davestroud@github.com': 
+Counting objects: 3, done.
+Writing objects:  33% (1/3)   Writing objects:  66% (2/3)   Writing objects: 100% (3/3)   Writing objects: 100% (3/3), 228 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/davestroud/BeerStudy.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+]1337;RemoteHost=davidstroud@grey-matter.local]1337;CurrentDir=/Users/davidstroud/Dropbox/Data_Science1/Beer]0;~/Dropbox/Data_Science1/Beer]133;D;0]133;A[0;35mdavidstroud[0;32m (master)[0;34m Beer $ [0m]133;B[K]133;D;0]133;A[0;35mdavidstroud[0;32m (master)[0;34m Beer $ [0m]133;B[K]133;D;0]133;A[0;35mdavidstroud[0;32m (master)[0;34m Beer $ [0m]133;B

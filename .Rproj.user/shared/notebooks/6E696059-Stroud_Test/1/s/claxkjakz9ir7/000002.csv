@@ -1,0 +1,2 @@
+"0","# How many breweries are present in each state?"
+"0","count(Breweries, (""State""))"
