@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1518756587416.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "29E1CA41",
+    "lastKnownWriteTime" : 1519077710,
+    "last_content_update" : 1519077710,
+    "path" : "~/Dropbox/Data_Science1/Beer/BottomsUp.Rmd",
+    "project_path" : "BottomsUp.Rmd",
+    "properties" : {
+        "cursorPosition" : "16,0",
+        "last_setup_crc32" : "7416D89Fbb338d19",
+        "scrollLine" : "37"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
