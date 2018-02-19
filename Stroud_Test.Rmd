@@ -40,15 +40,20 @@ count(Breweries, ("State"))
 # 2. Merge the beer data with the breweries data.
 # Print the first six observations
 total <- merge(Beers, Breweries, by="Name", all=TRUE)
-head(total,6)
+print (head(total,6))
 ```
 
 
 ```{r}
 # Print the last six observations
-tail(total,6)
+print (tail(total,6))
 ```
 
+```{r}
+# Report the number of NA's in each column
+MissingValues <- sapply(total, function(x)sum(is.na(x)))
+print (MissingValues)
+```
 
 
 
