@@ -32,10 +32,14 @@ summary(Breweries)
 
 
 ```{r}
-# How many breweries are present in each state?
+# 1. How many breweries are present in each state?
 count(Breweries, ("State"))
 ```
 
+```{r}
+total <- merge(Beers, Breweries, by="Name", all=TRUE)
+View(total)
+```
 
 
 
