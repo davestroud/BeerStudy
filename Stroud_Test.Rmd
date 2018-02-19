@@ -35,3 +35,19 @@ summary(Breweries)
 # How many breweries are present in each state?
 count(Breweries, ("State"))
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
