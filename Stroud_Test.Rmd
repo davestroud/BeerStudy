@@ -9,4 +9,29 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Test RMarkdown file
+
+```{r}
+library(ggplot2) # Data visualization
+library(readr) # CSV file I/O, e.g. the read_csv function
+library(psych)
+library(plyr)
+library(tidyr)
+
+Beers <- read.csv('Beers.csv')
+str(Beers)
+describe(Beers)
+summary(Beers)
+```
+
+```{r}
+Breweries <- read.csv('Breweries.csv')
+str(Breweries)
+describe(Breweries)
+summary(Breweries)
+```
+
+
+```{r}
+# How many breweries are present in each state?
+count(Breweries, ("State"))
+```
