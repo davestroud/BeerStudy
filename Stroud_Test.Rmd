@@ -37,11 +37,17 @@ count(Breweries, ("State"))
 ```
 
 ```{r}
+# 2. Merge the beer data with the breweries data.
+# Print the first six observations
 total <- merge(Beers, Breweries, by="Name", all=TRUE)
-View(total)
+head(total,6)
 ```
 
 
+```{r}
+# Print the last six observations
+tail(total,6)
+```
 
 
 
