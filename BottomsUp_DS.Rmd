@@ -100,4 +100,9 @@ ggplot(BitterFire, aes(x=Median.x, y= Median.y)) +
   theme(axis.text.x=element_text(size=rel(1.0)))
 ```
 
+```{r}
+BitterFire.lm = lm(Median.y~ Median.x, data=BitterFire)
+summary(BitterFire.lm)
+```
+
 
