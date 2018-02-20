@@ -1,1 +1,0 @@
-{"frames":[{"character_number":0,"end_character_number":0,"end_line_number":0,"file":"","func":"summary(brewset$State)","line_number":0}],"message":"Error in summary(brewset$State) : object 'brewset' not found\n"}

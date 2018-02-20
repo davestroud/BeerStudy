@@ -1,0 +1,103 @@
+---
+title: "Stroud_DataCamp"
+author: "David Stroud"
+date: "2/19/2018"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2) # Data visualization
+library(readr) # CSV file I/O, e.g. the read_csv function
+library(psych)
+library(dplyr) # Heavy use of this library
+```
+
+```{r}
+Beers <- read.csv('Beers.csv')
+Breweries <- read.csv('Breweries.csv')
+```
+
+```{r}
+# Renamed Brewery_id to Brew_ID to satisfy merging requirement
+Beers <- rename(Beers, Brew_ID = Brewery_id)
+```
+
+```{r}
+# dplyr library used to make data easier to work with.
+dplyr::tbl_df(Beers)
+dplyr::tbl_df(Breweries)
+```
+
+```{r}
+BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
+dplyr::tbl_df(BrewPub)
+```
+
+```{r}
+MissingValues <- sapply(BrewPub, function(x)sum(is.na(x)))
+print(MissingValues)
+```
+
+```{r}
+BrewPub %>%
+  group_by(State) %>%
+  summarise(count = n_distinct(Brew_ID))
+```
+
+```{r}
+Bitter <- BrewPub %>%
+  na.omit() %>%
+group_by(State) %>%
+summarise(Median = median(ABV)) %>%
+arrange(Median)
+dplyr::tbl_df(Bitter)
+```
+
+```{r}
+FireWater <- BrewPub %>%
+  na.omit() %>%
+group_by(State) %>%
+summarise(Median = median(IBU)) %>%
+arrange(Median)
+dplyr::tbl_df(FireWater)
+```
+
+```{r}
+ggplot(FireWater, aes(x=State, y= Median)) +
+  geom_point(shape=1) +
+  theme(axis.text.x=element_text(size=rel(0.8), angle=90))
+```
+
+```{r}
+ggplot(Bitter, aes(x=State, y= Median)) +
+  geom_point(shape=1) +
+  theme(axis.text.x=element_text(size=rel(0.8), angle=90))
+```
+
+```{r}
+# Combine Bitternes of Beer and Alcohol Content df for ease of analysis
+BitterFire <- full_join(FireWater, Bitter, by="State")
+dplyr::tbl_df(BitterFire)
+```
+
+```{r}
+# Log transform to allow a better fit for the data
+BitterFire$Median.x <- log(BitterFire$Median.x)
+dplyr::tbl_df(BitterFire)
+```
+
+```{r}
+# 
+ggplot(BitterFire, aes(x=Median.x, y= Median.y)) +
+  geom_point(shape=1) +
+   geom_smooth(method=lm) + # add linear regression line
+  theme(axis.text.x=element_text(size=rel(1.0), angle=90))
+```
+
+
