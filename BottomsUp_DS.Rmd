@@ -97,7 +97,7 @@ dplyr::tbl_df(BitterFire)
 ggplot(BitterFire, aes(x=Median.x, y= Median.y)) +
   geom_point(shape=1) +
    geom_smooth(method=lm) + # add linear regression line
-  theme(axis.text.x=element_text(size=rel(1.0), angle=90))
+  theme(axis.text.x=element_text(size=rel(1.0)))
 ```
 
 
