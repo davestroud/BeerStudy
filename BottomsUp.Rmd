@@ -52,3 +52,16 @@ geom_bar(stat = "identity") + labs(title = "IBU Median by State", x = "State", y
 summary(NewBrew$ABV)
 ```
 
+=======
+
+ggplot(data = ABVMed, aes(x=reorder(ABVMed$State, -ABVMed$ABV), y=ABVMed$ABV)) + geom_bar(stat = "identity") + labs(title = "ABV Median by State", x = "State", y = "Median")
+
+IBUMed <- aggregate(IBU ~ State, data = NewBrew, median, na.action = na.omit)
+ggplot(data = IBUMed, aes(x=reorder(IBUMed$State, -IBUMed$IBU), y=IBUMed$IBU))+
+geom_bar(stat = "identity") + labs(title = "IBU Median by State", x = "State", y = "Median")
+```
+
+```{r echo=TRUE}
+summary(NewBrew$ABV)
+```
+>>>>>>> 3bb5f83a58165746bb1b554e4b8046d8bef0dd8f
