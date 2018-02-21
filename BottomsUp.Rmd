@@ -24,8 +24,8 @@ Breweries <- read.csv('Breweries.csv')
 str(Breweries)
 describe(Breweries)
 summary(Breweries)
-```
 
+```
 
 ``` {r echo=TRUE}
 count(Breweries, ("State"))
@@ -50,8 +50,5 @@ geom_bar(stat = "identity") + labs(title = "IBU Median by State", x = "State", y
 
 ```{r echo=TRUE}
 summary(NewBrew$ABV)
-
 ```
 
-
-#### We are making changes
