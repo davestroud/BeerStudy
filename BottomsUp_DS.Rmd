@@ -72,21 +72,23 @@ dplyr::tbl_df(FireWater)
 ggplot(data=FireWater, aes(x=State, y=Median)) +
   geom_bar(stat="identity", fill="steelblue")+
   theme_minimal() +
-  theme(axis.text.x=element_text(size=rel(0.8), angle=90))
+  theme(axis.text.x=element_text(size=rel(0.8), angle=90)) +
+  ggtitle("Median IBU by State") +
+  labs(x="State",y="IBU")
 
   
 ```
 
-ggplot(FireWater, aes(x=State, y= Median)) +
-  geom_point(shape=1) +
-  theme(axis.text.x=element_text(size=rel(0.8), angle=90))
 
 
 ```{r}
 ggplot(data=Bitter, aes(x=State, y=Median)) +
   geom_bar(stat="identity", fill="steelblue")+
   theme_minimal() +
-  theme(axis.text.x=element_text(size=rel(0.8), angle=90))
+  theme(axis.text.x=element_text(size=rel(0.8), angle=90))+
+  ggtitle("Median ABV by State") +
+  labs(x="State",y="ABV")
+  
 ```
 
 ```{r}
