@@ -9,7 +9,6 @@ output: html_document
 ### The United States is currently enjoying a surge in popularity, variety and availability of craft beer, which is beer that is typically brewed using traditional, non-mechanized methods at smaller breweries.  From Alaska to Maine, craft beer has proliferated, offering, not only delicious libations, but also ample data to examine.  The report that follows will conduct an analysis of brewery data collected from all 50 states and Washington, D.C. about 558 US Breweries and 2410 US craft beers.  We will examine beer bitterness and alcohol content by state, as well as, the relationship between bitterness and alcohol content.
 
 
-
 ```{r load, echo=TRUE}
 library(ggplot2)
 library(readr)
@@ -26,7 +25,6 @@ describe(Breweries)
 summary(Breweries)
 ```
 
-
 ``` {r echo=TRUE}
 count(Breweries, ("State"))
 ```
@@ -35,10 +33,18 @@ count(Breweries, ("State"))
 names(Breweries)[names(Breweries)=="Brew_ID"]="Brewery_id"
 NewBrew = merge(Beers, Breweries, by="Brewery_id", all = TRUE)
 colSums(is.na(NewBrew))
-
 ```
 
-### Clean RMD file
+```{r echo=TRUE}
+ABVMed <- aggregate(ABV ~ State, data = NewBrew, median, na.action = na.omit)
 
+ggplot(data = ABVMed, aes(x=reorder(ABVMed$State, -ABVMed$ABV), y=ABVMed$ABV)) + geom_bar(stat = "identity") + labs(title = "ABV Median by State", x = "State", y = "Median")
 
-#### We are making changes
+IBUMed <- aggregate(IBU ~ State, data = NewBrew, median, na.action = na.omit)
+ggplot(data = IBUMed, aes(x=reorder(IBUMed$State, -IBUMed$IBU), y=IBUMed$IBU))+
+geom_bar(stat = "identity") + labs(title = "IBU Median by State", x = "State", y = "Median")
+```
+
+```{r echo=TRUE}
+summary(NewBrew$ABV)
+```
