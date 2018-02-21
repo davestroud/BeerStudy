@@ -3,8 +3,8 @@ title: "Stroud_DataCamp"
 author: "David Stroud"
 date: "2/19/2018"
 output:
-  word_document: default
   html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -69,14 +69,23 @@ dplyr::tbl_df(FireWater)
 ```
 
 ```{r}
+ggplot(data=FireWater, aes(x=State, y=Median)) +
+  geom_bar(stat="identity", fill="steelblue")+
+  theme_minimal() +
+  theme(axis.text.x=element_text(size=rel(0.8), angle=90))
+
+  
+```
+
 ggplot(FireWater, aes(x=State, y= Median)) +
   geom_point(shape=1) +
   theme(axis.text.x=element_text(size=rel(0.8), angle=90))
-```
+
 
 ```{r}
-ggplot(Bitter, aes(x=State, y= Median)) +
-  geom_point(shape=1) +
+ggplot(data=Bitter, aes(x=State, y=Median)) +
+  geom_bar(stat="identity", fill="steelblue")+
+  theme_minimal() +
   theme(axis.text.x=element_text(size=rel(0.8), angle=90))
 ```
 
