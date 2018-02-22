@@ -3,6 +3,7 @@ title: "Stroud_DataCamp"
 author: "David Stroud"
 date: "2/19/2018"
 output:
+  pdf_document: default
   html_document: default
   word_document: default
 ---
@@ -39,6 +40,18 @@ BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
 dplyr::tbl_df(BrewPub)
 ```
 
+
+```{r}
+head(BrewPub,6)
+tail(BrewPub,6)
+```
+```{r}
+BrewPub %>%
+  group_by(State) %>%
+  summarize(max_size = max(ABV, na.rm = TRUE))
+```
+
+
 ```{r}
 MissingValues <- sapply(BrewPub, function(x)sum(is.na(x)))
 print(MissingValues)
@@ -50,7 +63,11 @@ BrewPub %>%
   summarise(count = n_distinct(Brew_ID))
 ```
 
+
+
 ```{r}
+# Do we need to place NA with 0 or ignore?
+# Could be non-alcoholic beer
 Bitter <- BrewPub %>%
   na.omit() %>%
 group_by(State) %>%
@@ -68,6 +85,8 @@ arrange(Median)
 dplyr::tbl_df(FireWater)
 ```
 
+  
+
 ```{r}
 ggplot(data=FireWater, aes(x=State, y=Median)) +
   geom_bar(stat="identity", fill="steelblue")+
@@ -75,11 +94,7 @@ ggplot(data=FireWater, aes(x=State, y=Median)) +
   theme(axis.text.x=element_text(size=rel(0.8), angle=90)) +
   ggtitle("Median IBU by State") +
   labs(x="State",y="IBU")
-
-  
 ```
-
-
 
 ```{r}
 ggplot(data=Bitter, aes(x=State, y=Median)) +
@@ -92,14 +107,24 @@ ggplot(data=Bitter, aes(x=State, y=Median)) +
 ```
 
 ```{r}
-# Combine Bitternes of Beer and Alcohol Content df for ease of analysis
+# Which state has the maximum alcoholic (ABV) beer?
+BrewPub[which.max(BrewPub$ABV),]
+```
+
+```{r}
+# Which state has the most bitter (IBU) beer?
+BrewPub[which.max(BrewPub$IBU),]
+```
+
+```{r}
+# Combine Bitterness of Beer and Alcohol Content df for ease of analysis
 BitterFire <- full_join(FireWater, Bitter, by="State")
 dplyr::tbl_df(BitterFire)
 ```
 
 ```{r}
-# Log transform to allow a better fit for the data
-BitterFire$Median.x <- log(BitterFire$Median.x)
+# Change column names to reflect meaningful variable name
+BitterFire$Median.x <- (BitterFire$Median.x)
 dplyr::tbl_df(BitterFire)
 ```
 
@@ -108,7 +133,9 @@ dplyr::tbl_df(BitterFire)
 ggplot(BitterFire, aes(x=Median.x, y= Median.y)) +
   geom_point(shape=1) +
    geom_smooth(method=lm) + # add linear regression line
-  theme(axis.text.x=element_text(size=rel(1.0)))
+  theme(axis.text.x=element_text(size=rel(1.0)))+
+ggtitle("Correlation between IBU and ABV ") +
+  labs(x="IBU",y="ABV")
 ```
 
 ```{r}
