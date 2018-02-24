@@ -9,7 +9,6 @@ output: html_document
 ### The United States is currently enjoying a surge in popularity, variety and availability of craft beer, which is beer that is typically brewed using traditional, non-mechanized methods at smaller breweries.  From Alaska to Maine, craft beer has proliferated, offering, not only delicious libations, but also ample data to examine.  The report that follows will conduct an analysis of brewery data collected from all 50 states and Washington, D.C. about 558 US Breweries and 2410 US craft beers.  We will examine beer bitterness and alcohol content by state, as well as, the relationship between bitterness and alcohol content.
 
 
-
 ```{r load, echo=TRUE}
 library(ggplot2)
 library(readr)
@@ -25,8 +24,11 @@ str(Breweries)
 describe(Breweries)
 summary(Breweries)
 
+<<<<<<< HEAD
 ```
 
+=======
+>>>>>>> 3bb5f83a58165746bb1b554e4b8046d8bef0dd8f
 ``` {r echo=TRUE}
 count(Breweries, ("State"))
 ```
@@ -35,11 +37,11 @@ count(Breweries, ("State"))
 names(Breweries)[names(Breweries)=="Brew_ID"]="Brewery_id"
 NewBrew = merge(Beers, Breweries, by="Brewery_id", all = TRUE)
 colSums(is.na(NewBrew))
-
 ```
 
 ```{r echo=TRUE}
 ABVMed <- aggregate(ABV ~ State, data = NewBrew, median, na.action = na.omit)
+<<<<<<< HEAD
 
 ggplot(data = ABVMed, aes(x=reorder(ABVMed$State, -ABVMed$ABV), y=ABVMed$ABV)) + geom_bar(stat = "identity") + labs(title = "ABV Median by State", x = "State", y = "Median")
 
