@@ -17,7 +17,6 @@ library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(psych)
 library(dplyr) # Heavy use of this library
-library(stargazer)
 ```
 
 
@@ -43,7 +42,7 @@ dplyr::tbl_df(Breweries)
 ```{r}
 # 2. Merge beer data with the breweries data.
 BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
-(dplyr::tbl_df(BrewPub))
+#(dplyr::tbl_df(BrewPub))
 ```
 
 ```{r}
@@ -79,7 +78,7 @@ Bitter <- BrewPub %>%
 group_by(State) %>%
 summarise(Median = median(ABV)) %>%
 arrange(Median)
-dplyr::tbl_df(Bitter)
+#dplyr::tbl_df(Bitter) ~ duplicated next line
 Bitter %>% tbl_df %>% print(n=50)
 ```
 
@@ -90,7 +89,7 @@ FireWater <- BrewPub %>%
 group_by(State) %>%
 summarise(Median = median(IBU)) %>%
 arrange(Median)
-dplyr::tbl_df(FireWater)
+# dplyr::tbl_df(FireWater) duplicated next line
 FireWater %>% tbl_df %>% print(n=50)
 ```
 
@@ -116,13 +115,12 @@ ggplot(data=Bitter, aes(x=State, y=Median)) +
 
 ```{r}
 # 5. Which state has the maximum alcoholic (ABV) beer?
-BrewPub[which.max(BrewPub$ABV),]
-
+print(BrewPub[which.max(BrewPub$ABV),])
 ```
 
 ```{r}
 # 5. a Which state has the most bitter (IBU) beer?
-BrewPub[which.max(BrewPub$IBU),]
+print(BrewPub[which.max(BrewPub$IBU),])
 ```
 
 ```{r}
@@ -130,16 +128,17 @@ BrewPub[which.max(BrewPub$IBU),]
 summary(BrewPub$ABV)
 ```
 
+
 ```{r}
 # Combine Bitterness of Beer and Alcohol Content df for ease of analysis
 BitterFire <- full_join(FireWater, Bitter, by="State")
-dplyr::tbl_df(BitterFire)
+# dplyr::tbl_df(BitterFire)
 ```
 
 ```{r}
 # Change column names to reflect meaningful variable name
 BitterFire$Median.x <- (BitterFire$Median.x)
-dplyr::tbl_df(BitterFire)
+#dplyr::tbl_df(BitterFire)
 ```
 
 ```{r}
