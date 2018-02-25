@@ -48,19 +48,22 @@ BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
 
 ```{r}
 # 1.How many breweries are present in each state?
- BrewPub %>%
+States <- BrewPub %>%
   group_by(State) %>%
   summarise(count = n_distinct(Brew_ID))
+States %>% tbl_df %>% print(n=51)
+
 ```
 
 ```{r}
 # 2.a Print the first six observations
-head(BrewPub,6)
+print(head(BrewPub))
 ```
+
 
 ```{r}
 # 2. b Print the last six observations
-tail(BrewPub,6)
+print (tail(BrewPub))
 ```
 
 ```{r}
@@ -77,6 +80,7 @@ group_by(State) %>%
 summarise(Median = median(ABV)) %>%
 arrange(Median)
 dplyr::tbl_df(Bitter)
+Bitter %>% tbl_df %>% print(n=50)
 ```
 
 ```{r}
@@ -87,6 +91,7 @@ group_by(State) %>%
 summarise(Median = median(IBU)) %>%
 arrange(Median)
 dplyr::tbl_df(FireWater)
+FireWater %>% tbl_df %>% print(n=50)
 ```
 
 ```{r}
