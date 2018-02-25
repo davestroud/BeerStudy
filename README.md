@@ -27,7 +27,7 @@
 
 
 ## **Clean/Combined Data**
-### **BrewPub: [BrewPUb.csv](BrewPub.csv)**
+### **BrewPub: [BrewPub.csv](BrewPub.csv)**
 #### Merged by brew_ID/Brewery_id
 * Name.x:  Beer Names
 * Beer_ID:  ID number for each beer 
