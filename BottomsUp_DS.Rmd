@@ -4,8 +4,8 @@ author: "David Stroud"
 date: "2/19/2018"
 output:
   html_document: default
-  word_document: default
   pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -17,13 +17,16 @@ library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(psych)
 library(dplyr) # Heavy use of this library
+library(stargazer)
 ```
+
 
 ```{r}
 # Read in beer and breweries data set
 Beers <- read.csv('Beers.csv')
 Breweries <- read.csv('Breweries.csv')
 ```
+
 
 ```{r}
 # Renamed Brewery_id to Brew_ID to satisfy merging requirement
@@ -40,7 +43,7 @@ dplyr::tbl_df(Breweries)
 ```{r}
 # 2. Merge beer data with the breweries data.
 BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
-dplyr::tbl_df(BrewPub)
+(dplyr::tbl_df(BrewPub))
 ```
 
 ```{r}
@@ -104,7 +107,6 @@ ggplot(data=Bitter, aes(x=State, y=Median)) +
   theme(axis.text.x=element_text(size=rel(0.8), angle=90))+
   ggtitle("Median ABV by State") +
   labs(x="State",y="ABV")
-  
 ```
 
 ```{r}
@@ -116,6 +118,11 @@ BrewPub[which.max(BrewPub$ABV),]
 ```{r}
 # 5. a Which state has the most bitter (IBU) beer?
 BrewPub[which.max(BrewPub$IBU),]
+```
+
+```{r}
+# Summary for ABV variable
+summary(BrewPub$ABV)
 ```
 
 ```{r}
