@@ -21,10 +21,26 @@
 * Beer_ID:  ID number for each beer
 * ABV:  Alcohol by volume
 * IBU:  International Bitterness Unit
-* Brewery_id:  ID number for brewery
+* Brewery_id:  ID number for each brewery
 * Style: Style of Beer
-* Ounces:  fluid ounces of each beer
+* Ounces:  Fluid ounces of each beer
 
 
 ## **Clean/Combined Data**
-BrewPub
+### **BrewPub: [BrewPUb.csv](BrewPub.csv)**
+#### Merged by brew_ID/Brewery_id
+* Name.x:  Beer Names
+* Beer_ID:  ID number for each beer 
+* ABV: Alcohol by Volume
+* IBU:  International Bitterness Unit
+* Brew_ID:  ID number for each brewery
+* Style: Style of Beer
+* Ounces Fluid ounces of each beer
+* Name.y:  Name of each Brewery
+* City:  City each brewery is located
+* State: State each brewery is located
+
+
+## **Analysis**
+
+
