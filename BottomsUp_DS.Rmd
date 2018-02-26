@@ -18,12 +18,13 @@ library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(dplyr) # Heavy use of this library
 library(tidyr)
+library(readr) # for cleaner csv output
 ```
 
 ```{r}
-# Read in beer and breweries data set
-Beers <- read_csv('Beers.csv')
-Breweries <- read_csv('Breweries.csv')
+# Read in beer and breweries data set using _csv for more tidy output
+Beers <- read_csv('Beers.csv', col_types = cols())
+Breweries <- read_csv('Breweries.csv', col_types = cols())
 ```
 
 ```{r}
@@ -109,20 +110,8 @@ print(BrewPub[which.max(BrewPub$IBU),])
 ```
 
 ```{r}
-# Summary for ABV variable
+# 6. Summary Statistics for ABV variable
 summary(BrewPub$ABV)
-```
-
-```{r}
-# Combine Bitterness of Beer and Alcohol Content df for ease of analysis
-BitterFire <- full_join(FireWater, Bitter, by="State")
-# dplyr::tbl_df(BitterFire)
-```
-
-```{r}
-# Change column names to reflect meaningful variable name
-BitterFire$Median.x <- (BitterFire$Median.x)
-#dplyr::tbl_df(BitterFire)
 ```
 
 ```{r}
