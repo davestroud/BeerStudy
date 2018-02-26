@@ -3,9 +3,9 @@ title: "Study of US Craft Beer and Breweries"
 author: "David Stroud, Cory Thigpen, Korey MacVittie, and Stacy Conant"
 date: "February 2018"
 output:
-  word_document: default
   html_document: default
   pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -19,6 +19,7 @@ library(readr) # CSV file I/O, e.g. the read_csv function
 library(dplyr) # Heavy use of this library
 library(tidyr)
 library(readr) # for cleaner csv output
+library(ggthemes) # for themes in ggplot
 ```
 
 ```{r}
@@ -40,16 +41,15 @@ Beers <- rename(Beers, Brew_ID = Brewery_id)
 ```{r}
 # 2. Merge beer data with the breweries data.
 BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
-#(dplyr::tbl_df(BrewPub))
 ```
 
 ```{r}
-# 2.a Print the first six observations
+# 2.a Print the first six observations of merged data set
 print(BrewPub %>% head())
 ```
 
 ```{r}
-# 2. b Print the last six observations
+# 2. b Print the last six observations of merged data set
 print(BrewPub %>% tail())
 ```
 
@@ -61,42 +61,48 @@ print(MissingValues)
 
 ```{r}
 # 4. Compute the median alcohol content unit for each state.
-Bitter <- BrewPub %>%
+Firewater <- BrewPub %>%
   na.omit() %>%
 group_by(State) %>%
 summarise(Median = median(ABV)) %>%
 arrange(Median)
-Bitter %>% tbl_df %>% print(n=50)
+Firewater %>% tbl_df %>% print(n=50)
 ```
 
 ```{r}
-# 4. a Compute the median alcohol content unit for each state.
-FireWater <- BrewPub %>%
+# 4. a Compute the median international bitterness unit for each state.
+Bitter <- BrewPub %>%
   na.omit() %>%
 group_by(State) %>%
 summarise(Median = median(IBU)) %>%
 arrange(Median)
-FireWater %>% tbl_df %>% print(n=50)
+Bitter %>% tbl_df %>% print(n=50)
 ```
 
+
 ```{r}
-# 4. b Plot a bar chart to compare IBU by state 
-ggplot(data=FireWater, aes(x=State, y=Median)) +
+# 4. b Plot a bar chart to compare ABV by state
+library(ggthemes)
+ggplot(data=Firewater, aes(x=State, y=Median)) +
   geom_bar(stat="identity", fill="steelblue")+
-  theme_minimal() +
+  theme_economist() + 
+  scale_color_economist()+
   theme(axis.text.x=element_text(size=rel(0.8), angle=90)) +
-  ggtitle("Median IBU by State") +
-  labs(x="State",y="IBU")
-```
-
-```{r}
-# 4. c Plot a bar chart to compare ABV by state
-ggplot(data=Bitter, aes(x=State, y=Median)) +
-  geom_bar(stat="identity", fill="steelblue")+
-  theme_minimal() +
-  theme(axis.text.x=element_text(size=rel(0.8), angle=90))+
   ggtitle("Median ABV by State") +
   labs(x="State",y="ABV")
+```
+
+
+
+```{r}
+# 4. c Plot a bar chart to compare IBU by state
+ggplot(data=Bitter, aes(x=State, y=Median)) +
+  geom_bar(stat="identity", fill="steelblue")+
+  theme_economist() + 
+  scale_color_economist()+
+  theme(axis.text.x=element_text(size=rel(0.8), angle=90))+
+  ggtitle("Median IBU by State") +
+  labs(x="State",y="IBU")
 ```
 
 ```{r}
@@ -120,6 +126,8 @@ summary(BrewPub$ABV)
 ggplot(BrewPub, aes(x=IBU, y= ABV)) +
   geom_point(shape=1) +
    geom_smooth(method=lm) + # add linear regression line
+  theme_economist() + 
+  scale_color_economist()+
   theme(axis.text.x=element_text(size=rel(1.0)))+
 ggtitle("Correlation between IBU and ABV ") +
   labs(x="IBU",y="ABV")
