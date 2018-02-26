@@ -6,7 +6,7 @@
 ### Date: Feb 2018
 
 ## **Introduction**
-The United States is currently enjoying a surge in popularity, variety and availability of craft beer, which is beer that is typically brewed using traditional, non-mechanized methods at smaller breweries. From Alaska to Maine, craft beer has proliferated, offering, not only delicious libations, but also ample data to examine. The report that follows will conduct an analysis of brewery data collected from all 50 states and Washington, D.C. about 558 US Breweries and 2410 US craft beers. We will examine beer bitterness and alcohol content by state, as well as, the relationship between bitterness and alcohol content.
+The United States is currently enjoying a surge in popularity, variety and availability of craft beer, which is beer that is typically brewed using traditional, non-mechanized methods at smaller breweries. From Alaska to Maine, craft beer has proliferated, offering, not only delicious libations, but also ample data to examine. The report that follows will conduct an analysis of brewery data collected from all 50 states and Washington, D.C. about 558 US Breweries and 2410 US craft beers. We will examine craft beer bitterness and alcohol content by state, as well as, the relationship between bitterness and alcohol content.
 
 ## **Raw Data**
 
