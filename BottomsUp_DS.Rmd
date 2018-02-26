@@ -9,15 +9,15 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
+
 
 ```{r}
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(dplyr) # Heavy use of this library
 ```
-
 
 ```{r}
 # Read in beer and breweries data set
@@ -32,13 +32,6 @@ Beers <- rename(Beers, Brew_ID = Brewery_id)
 ```
 
 ```{r}
-# dplyr library used to make data easier to work with.
-#dplyr::tbl_df(Beers)
-#dplyr::tbl_df(Breweries)
-```
-
-
-```{r}
 # 2. Merge beer data with the breweries data.
 BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
 #(dplyr::tbl_df(BrewPub))
@@ -46,12 +39,9 @@ BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
 
 ```{r}
 # 1.How many breweries are present in each state?
-States <- BrewPub %>%
-  group_by(State) %>%
-  summarise(count = n_distinct(Brew_ID))
-States %>% tbl_df %>% print(n=51)
-
+table(Breweries$State)
 ```
+
 
 ```{r}
 # 2.a Print the first six observations
