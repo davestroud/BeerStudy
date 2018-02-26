@@ -1,11 +1,11 @@
 ---
-title: "Stroud_DataCamp"
-author: "David Stroud"
-date: "2/19/2018"
+title: "Study of US Craft Beer and Breweries"
+author: "David Stroud, Cory Thigpen, Korey MacVittie, and Stacy Conant"
+date: "February 2018"
 output:
-  html_document: default
   pdf_document: default
   word_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,7 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
-library(psych)
 library(dplyr) # Heavy use of this library
 ```
 
@@ -34,8 +33,8 @@ Beers <- rename(Beers, Brew_ID = Brewery_id)
 
 ```{r}
 # dplyr library used to make data easier to work with.
-dplyr::tbl_df(Beers)
-dplyr::tbl_df(Breweries)
+#dplyr::tbl_df(Beers)
+#dplyr::tbl_df(Breweries)
 ```
 
 
