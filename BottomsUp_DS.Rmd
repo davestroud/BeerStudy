@@ -3,9 +3,9 @@ title: "Study of US Craft Beer and Breweries"
 author: "David Stroud, Cory Thigpen, Korey MacVittie, and Stacy Conant"
 date: "February 2018"
 output:
-  pdf_document: default
   word_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -17,19 +17,19 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(dplyr) # Heavy use of this library
+library(tidyr)
 ```
 
 ```{r}
 # Read in beer and breweries data set
-Beers <- read.csv('Beers.csv')
-Breweries <- read.csv('Breweries.csv')
+Beers <- read_csv('Beers.csv')
+Breweries <- read_csv('Breweries.csv')
 ```
 
 ```{r}
 # 1.How many breweries are present in each state?
 table(Breweries$State)
 ```
-
 
 ```{r}
 # Renamed Brewery_id to Brew_ID to satisfy merging requirement
@@ -42,16 +42,14 @@ BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
 #(dplyr::tbl_df(BrewPub))
 ```
 
-
 ```{r}
 # 2.a Print the first six observations
-print(head(BrewPub))
+print(BrewPub %>% head())
 ```
-
 
 ```{r}
 # 2. b Print the last six observations
-print (tail(BrewPub))
+print(BrewPub %>% tail())
 ```
 
 ```{r}
@@ -67,7 +65,6 @@ Bitter <- BrewPub %>%
 group_by(State) %>%
 summarise(Median = median(ABV)) %>%
 arrange(Median)
-#dplyr::tbl_df(Bitter) ~ duplicated next line
 Bitter %>% tbl_df %>% print(n=50)
 ```
 
@@ -78,7 +75,6 @@ FireWater <- BrewPub %>%
 group_by(State) %>%
 summarise(Median = median(IBU)) %>%
 arrange(Median)
-# dplyr::tbl_df(FireWater) duplicated next line
 FireWater %>% tbl_df %>% print(n=50)
 ```
 
@@ -117,7 +113,6 @@ print(BrewPub[which.max(BrewPub$IBU),])
 summary(BrewPub$ABV)
 ```
 
-
 ```{r}
 # Combine Bitterness of Beer and Alcohol Content df for ease of analysis
 BitterFire <- full_join(FireWater, Bitter, by="State")
@@ -140,6 +135,4 @@ ggplot(BrewPub, aes(x=IBU, y= ABV)) +
 ggtitle("Correlation between IBU and ABV ") +
   labs(x="IBU",y="ABV")
 ```
-
-
 
