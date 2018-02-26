@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
 
-```{r}
+```{r , include=FALSE}
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(dplyr) # Heavy use of this library
@@ -23,6 +23,11 @@ library(dplyr) # Heavy use of this library
 # Read in beer and breweries data set
 Beers <- read.csv('Beers.csv')
 Breweries <- read.csv('Breweries.csv')
+```
+
+```{r}
+# 1.How many breweries are present in each state?
+table(Breweries$State)
 ```
 
 
@@ -35,11 +40,6 @@ Beers <- rename(Beers, Brew_ID = Brewery_id)
 # 2. Merge beer data with the breweries data.
 BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
 #(dplyr::tbl_df(BrewPub))
-```
-
-```{r}
-# 1.How many breweries are present in each state?
-table(Breweries$State)
 ```
 
 
