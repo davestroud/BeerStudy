@@ -3,10 +3,10 @@ title: "Study of US Craft Beer and Breweries"
 author: "David Stroud, Cory Thigpen, Korey MacVittie, and Stacy Conant"
 date: "February 2018"
 output:
-  'prettydoc:: html_pretty': default
+  word_document: default
   pdf_document: default
   html_document: default
-  word_document: default
+  'prettydoc:: html_pretty': default
 ---
 
 ```{r setup, include=FALSE}
