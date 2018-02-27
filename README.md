@@ -47,4 +47,5 @@ The United States is currently enjoying a surge in popularity, variety and avail
 #### Exploration of merged data to assess craft beer bitterness (IBU) and alcohol content (ABV) by state and the relationship, if any, between IBU and ABV.
 
 #### Completed analysis file: [BottomsUp.Rmd](BottomsUp.Rmd) 
+#### View document on RPubs: [BottomsUp](http://rpubs.com/davidstroud/364826)
 
