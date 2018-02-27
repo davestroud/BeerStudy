@@ -3,8 +3,14 @@ title: "Study of US Craft Beer and Breweries"
 author: "David Stroud, Cory Thigpen, Korey MacVittie, and Stacy Conant"
 date: "February 2018"
 output:
+<<<<<<< HEAD
   html_document: default
   pdf_document: default
+=======
+  'prettydoc:: html_pretty': default
+  pdf_document: default
+  html_document: default
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
   word_document: default
 ---
 
@@ -34,25 +40,41 @@ We begin by setting `knitr` options, loading various libraries we will need for 
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
+<<<<<<< HEAD
 ```{r}
+=======
+
+```{r , include=FALSE}
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
 library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(dplyr) # Heavy use of this library
+library(tidyr)
+library(readr) # for cleaner csv output
+library(ggthemes) # for themes in ggplot
 ```
 
 ```{r}
-# Read in beer and breweries data set
-Beers <- read.csv('Beers.csv')
-Breweries <- read.csv('Breweries.csv')
+# Read in beer and breweries data set using _csv for more tidy output
+Beers <- read_csv('Beers.csv', col_types = cols())
+Breweries <- read_csv('Breweries.csv', col_types = cols())
 ```
 
+<<<<<<< HEAD
 The field `Brewery_id` in `Beers.csv` and `Brew_ID` in `Breweries.csv` are the same data, but do not share a name. We remedy this by renaming the column in `Beers.csv`.
+=======
+```{r}
+# 1.How many breweries are present in each state?
+table(Breweries$State)
+```
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
 
 ```{r}
 # Renamed Brewery_id to Brew_ID to satisfy merging requirement
 Beers <- rename(Beers, Brew_ID = Brewery_id)
 ```
 
+<<<<<<< HEAD
 ## Research Questions
 
 We can now address the research questions put forth on the dataset.
@@ -78,6 +100,21 @@ To retrieve the first and last six observations from the combined data, we run `
 ```{r}
 print(head(BrewPub))
 print (tail(BrewPub))
+=======
+```{r}
+# 2. Merge beer data with the breweries data.
+BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
+```
+
+```{r}
+# 2.a Print the first six observations of merged data set
+print(BrewPub %>% head())
+```
+
+```{r}
+# 2. b Print the last six observations of merged data set
+print(BrewPub %>% tail())
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
 ```
 
 ### 3. Report the number of NA’s in each column.
@@ -96,41 +133,64 @@ print(MissingValues)
 We build two new datasets, `Bitter` and `FireWater`, from our `BrewPub` dataset, omitting NA values. We then group the relevant values by state, and summarise by the median of the relevant value.
 
 ```{r}
+<<<<<<< HEAD
 Bitter <- BrewPub %>%
+=======
+# 4. Compute the median alcohol content unit for each state.
+Firewater <- BrewPub %>%
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
   na.omit() %>%
 group_by(State) %>%
 summarise(Median = median(ABV)) %>%
 arrange(Median)
-#dplyr::tbl_df(Bitter) ~ duplicated next line
-Bitter %>% tbl_df %>% print(n=50)
+Firewater %>% tbl_df %>% print(n=50)
 ```
 
 ```{r}
+<<<<<<< HEAD
 FireWater <- BrewPub %>%
+=======
+# 4. a Compute the median international bitterness unit for each state.
+Bitter <- BrewPub %>%
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
   na.omit() %>%
 group_by(State) %>%
 summarise(Median = median(IBU)) %>%
 arrange(Median)
-# dplyr::tbl_df(FireWater) duplicated next line
-FireWater %>% tbl_df %>% print(n=50)
+Bitter %>% tbl_df %>% print(n=50)
 ```
 
+
 ```{r}
+<<<<<<< HEAD
 ggplot(data=FireWater, aes(x=State, y=Median)) +
+=======
+# 4. b Plot a bar chart to compare ABV by state
+library(ggthemes)
+ggplot(data=Firewater, aes(x=State, y=Median)) +
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
   geom_bar(stat="identity", fill="steelblue")+
-  theme_minimal() +
+  theme_economist() + 
+  scale_color_economist()+
   theme(axis.text.x=element_text(size=rel(0.8), angle=90)) +
-  ggtitle("Median IBU by State") +
-  labs(x="State",y="IBU")
-```
-
-```{r}
-ggplot(data=Bitter, aes(x=State, y=Median)) +
-  geom_bar(stat="identity", fill="steelblue")+
-  theme_minimal() +
-  theme(axis.text.x=element_text(size=rel(0.8), angle=90))+
   ggtitle("Median ABV by State") +
   labs(x="State",y="ABV")
+```
+
+
+
+```{r}
+<<<<<<< HEAD
+=======
+# 4. c Plot a bar chart to compare IBU by state
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
+ggplot(data=Bitter, aes(x=State, y=Median)) +
+  geom_bar(stat="identity", fill="steelblue")+
+  theme_economist() + 
+  scale_color_economist()+
+  theme(axis.text.x=element_text(size=rel(0.8), angle=90))+
+  ggtitle("Median IBU by State") +
+  labs(x="State",y="IBU")
 ```
 
 ### 5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
@@ -154,10 +214,11 @@ print(BrewPub[which.max(BrewPub$IBU),])
 We do this by calling `summary` on the `ABV` column in our `BrewPub` dataset.
 
 ```{r}
-# Summary for ABV variable
+# 6. Summary Statistics for ABV variable
 summary(BrewPub$ABV)
 ```
 
+<<<<<<< HEAD
 ### 7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
 
 To begin, we do a `full_join` of our `FireWater` and `Bitter` datasets, to ease our analysis.
@@ -180,17 +241,24 @@ BitterFire$Median.x <- (BitterFire$Median.x)
 #dplyr::tbl_df(BitterFire)
 ```
 
+=======
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
 ```{r}
 # 7. Draw a scatter plot to compare relationship between beer 
 # bitterness and alcohol content
 ggplot(BrewPub, aes(x=IBU, y= ABV)) +
   geom_point(shape=1) +
    geom_smooth(method=lm) + # add linear regression line
+  theme_economist() + 
+  scale_color_economist()+
   theme(axis.text.x=element_text(size=rel(1.0)))+
 ggtitle("Correlation between IBU and ABV ") +
   labs(x="IBU",y="ABV")
 ```
 
+<<<<<<< HEAD
 ## Review and Conclusion
 
 In this analysis, we examined data gleaned from two datasets regarding beers and breweries throughout the US. We examined the structure of this data, cleaned them, and combined them. We then performed various analyses, such as calculating median values for IBU and ABV by state, and determining which states had the beers with the highest ABV and IBU values. We finished by looking for a potential relationship between IBU and ABV, and found that there is evidence to suggest that a positive correlation exists between the two.
+=======
+>>>>>>> 519365a7b55065a94de89ad7a9c696ad13009855
