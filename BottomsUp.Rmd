@@ -76,6 +76,13 @@ As part of our analysis, we ensured that duplicate data within each dataset shar
 ```{r}
 BrewPub <- full_join(Beers, Breweries, by="Brew_ID")
 ```
+
+```{r}
+# Change variable names to more meaningful title
+BrewPub <- rename(BrewPub, Beer = Name.x, Brewery = Name.y,
+                  OZ = Ounces)
+```
+
 To retrieve the first and last six observations from the combined data, we run `head` and `tail` on `BrewPub`, our combined dataset.
 ```{r}
 kable(BrewPub %>% head())
