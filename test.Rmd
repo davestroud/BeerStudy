@@ -84,6 +84,7 @@ kable(BrewPub %>% head())
 ```{r}
 kable(BrewPub %>% tail())
 ```
+
 ### 3. Report the number of NA’s in each column.
 
 To do this, we use a function (which returns `true` if a given value is NA, `false` otherwise, using `is.na`) and `sapply` to determine the number of missing values for each column within `BrewPub`.
@@ -141,6 +142,7 @@ ggplot(data=Bitter, aes(x=State, y=Median)) +
   ggtitle("Median IBU by State") +
   labs(x="State",y="IBU")
 ```
+
 ### 5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
 
 We use `which.max` on our `BrewPub` dataset, seeking specifically the maximum value in the `ABV` and `IBU` columns.
@@ -153,6 +155,7 @@ kable(BrewPub[which.max(BrewPub$ABV),])
 ```{r}
 kable(BrewPub[which.max(BrewPub$IBU),])
 ```
+
 ### 6. Summary statistics for the ABV variable.
 
 We do this by calling `summary` on the `ABV` column in our `BrewPub` dataset.
@@ -161,6 +164,7 @@ We do this by calling `summary` on the `ABV` column in our `BrewPub` dataset.
 BeerSummary <- (summary(BrewPub$ABV))
 print(BeerSummary)
 ```
+
 ### 7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
 
 We utilize `ggplot` to plot a scatter plot of the data, using `IBU` and `ABV` as our variables.
