@@ -39,7 +39,6 @@ library(ggplot2) # Data visualization
 library(readr) # CSV file I/O, e.g. the read_csv function
 library(dplyr) # Heavy use of this library
 library(tidyr)
-library(readr) # for cleaner csv output
 library(ggthemes) # for themes in ggplot
 library(knitr)
 library(kableExtra) # library to make the document more presentable
